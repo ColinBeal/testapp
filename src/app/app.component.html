@@ -11,7 +11,7 @@
       />
       <br /><br />
       <button
-        [ngClass]="{disabled: !file}"
+        [ngClass]="{ disabled: !file }"
         [disabled]="!file"
         (click)="onFileSubmit()"
       >
@@ -20,8 +20,8 @@
     </div>
   </div>
   <!--Members form -->
-  <div class="members-container" [ngClass]="{hidden: members.length !== 0}">
-    <ng-container *ngFor="let member of members; let indexOfelement=index;">
+  <div class="members-container" [ngClass]="{ hidden: members.length !== 0 }">
+    <ng-container *ngFor="let member of members; let indexOfelement = index">
       <div class="header">
         <span *ngIf="indexOfelement === 0">2. Signataire</span>
         <span *ngIf="indexOfelement === 1">3. Cosignataire (optionnel)</span>
@@ -34,57 +34,47 @@
       </div>
       <div class="form-row">
         <div class="field">
-          <label>
-            Nom :
-          </label>
+          <label> Nom : </label>
           <input
-          name="lastname{{indexOfelement}}"
-          placeholder="Nom"
-          [(ngModel)]="members[indexOfelement].lastname"
+            name="lastname{{ indexOfelement }}"
+            placeholder="Nom"
+            [(ngModel)]="members[indexOfelement].lastname"
           />
         </div>
         <div class="field">
-          <label>
-            Prénom :
-          </label>
+          <label> Prénom : </label>
           <input
-          name="firstname{{indexOfelement}}"
-          placeholder="Prénom"
-          [(ngModel)]="members[indexOfelement].firstname"
+            name="firstname{{ indexOfelement }}"
+            placeholder="Prénom"
+            [(ngModel)]="members[indexOfelement].firstname"
           />
         </div>
       </div>
-      <br/><br />
+      <br /><br />
       <div class="form-row">
         <div class="field">
-          <label>
-            Téléphone :
-          </label>
+          <label> Téléphone : </label>
           <input
-          name="phone{{indexOfelement}}"
-          placeholder="Téléphone"
-          [(ngModel)]="members[indexOfelement].phone"
+            name="phone{{ indexOfelement }}"
+            placeholder="Téléphone"
+            [(ngModel)]="members[indexOfelement].phone"
           />
         </div>
         <div class="field">
-          <label>
-            Email :
-          </label>
+          <label> Email : </label>
           <input
-          name="email{{indexOfelement}}"
-          placeholder="Email"
-          [(ngModel)]="members[indexOfelement].email"
+            name="email{{ indexOfelement }}"
+            placeholder="Email"
+            [(ngModel)]="members[indexOfelement].email"
           />
         </div>
       </div>
       <br /><br />
     </ng-container>
-    <button
-      *ngIf="!!fileId"
-      (click)="sendPdfToSign(fileId)"
-    >
+    <button *ngIf="!!fileId" (click)="sendPdfToSign(fileId)">
       Envoyer le document
     </button>
   </div>
 
+  <p *ngIf="!!pdfSent">Document envoyé ! :)</p>
 </div>
